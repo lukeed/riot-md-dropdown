@@ -1,6 +1,68 @@
+/**
+ * Material Design Dropdown
+ */
 
+ $base-unit : 8px !default
+ $base-radius : 2px !default
+ $base-font-size : 14px !default
+ $base-animation-curve : linear !default
 
-$text-color : #003366
+ $dropdown-label-height: 4 * $base-unit
+ $dropdown-label-bg: #f5f5f5
+ $dropdown-label-hover-bg: darken($dropdown-label-bg, 10%)
 
-:scope p
-  color: $text-color
+ $dropdown-item-bg: #ffffff
+ $dropdown-item-hover-bg: #f5f5f5
+
+.md-dropdown
+	position: relative
+	display: inline-block
+	width: auto
+	vertical-align: top
+
+	&__label,
+	&__item
+		display: block
+		cursor: pointer
+		overflow: hidden
+		position: relative
+		transition: background-color 0.2s $base-animation-curve
+
+	&__label
+		user-select: none
+		height: $dropdown-label-height
+		line-height: $dropdown-label-height
+		background-color: $dropdown-label-bg
+		padding: 0 3*$base-unit
+		font-weight: 700
+		&:hover
+			background-color: $dropdown-label-hover-bg
+
+		.material-icons
+			vertical-align: middle
+			width: 0
+
+	&__menu
+		position: absolute
+		width: 100%
+		padding: $base-unit 0
+		background: $dropdown-item-bg
+		margin-top: $base-unit
+		margin-left: -1 * $base-unit
+		border-radius: $base-radius
+		overflow: hidden
+		transition: all 0.25s $base-animation-curve
+		transform: translateY($dropdown-label-height) translateZ(0)
+		visibility: hidden
+		opacity: 0
+
+	&__item
+		padding: $base-unit/2 2*$base-unit
+		font-size: $base-font-size
+		&:hover
+			background-color: $dropdown-item-hover-bg
+
+	&--open .md-dropdown__menu
+		opacity: 1
+		visibility: visible
+		transform: translateY(0) translateZ(0)
