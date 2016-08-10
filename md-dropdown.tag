@@ -1,19 +1,53 @@
-<md-dropdown>
-	<p onclick="{ onClick }">Hallo hallo!</p>
+<md-dropdown-item>
+	<a class="md-dropdown__item" onclick="{ onClick }">{ opts.label }</a>
 
 	<script>
-		console.log('before `mount` event: ', this.root);
+		var self = this;
 
-		onClick(e) {
-			alert('clicked!');
-		}
+		self.onClick = function (e) {
+			if (e.target.disabled) return;
 
-		this.on('mount', function () {
-			console.log('mounted');
-		}.bind(this));
+			if (opts.href) {
+				/^http/i.test(opts.href) ? (window.location.href = opts.href) : riot.route(opts.href);
+			}
+
+			opts.onpush && opts.onpush(e);
+
+			self.parent.doClose();
+		};
 	</script>
+</md-dropdown-item>
 
-	<style scoped>
-		@import "md-dropdown.sass";
-	</style>
+<md-dropdown>
+	<div class="md-dropdown {md-dropdown--open: isOpen}">
+		<label class="md-dropdown__label" onclick="{ doToggle }">
+			{ opts.label } <md-icon type="arrow_drop_down" />
+		</label>
+
+		<div class="md-dropdown__menu shadow--3">
+			<yield />
+		</div>
+	</div>
+
+	<script>
+		var self = this;
+		var isOpen = false;
+
+		self.doToggle = function (e) {
+			self.doRipple(e);
+			return isOpen ? self.doClose() : self.doOpen();
+		};
+
+		self.doOpen = function () {
+			if (!self.isMounted) return;
+			isOpen = true;
+			self.update();
+		};
+
+		self.doClose = function () {
+			if (!self.isMounted) return;
+			isOpen = false;
+			self.update();
+		}
+	</script>
 </md-dropdown>
