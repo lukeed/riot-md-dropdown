@@ -24,7 +24,7 @@
 			{ opts.label } <md-icon type="arrow_drop_down" />
 		</label>
 
-		<div class="md-dropdown__menu shadow--3">
+		<div class="md-dropdown__menu md-shadow--3">
 			<yield />
 		</div>
 	</div>

@@ -29,8 +29,7 @@
 		"tests"
 	],
 	"dependencies": {
-		"riot": "^2.5.0"
-	},
-	"devDependencies": {
+		"riot": "^2.5.0",
+		"md-shadows": "^1.0.0"
 	}
 }
