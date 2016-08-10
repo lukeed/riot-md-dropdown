@@ -34,7 +34,6 @@
 		var isOpen = false;
 
 		self.doToggle = function (e) {
-			self.doRipple(e);
 			return isOpen ? self.doClose() : self.doOpen();
 		};
 
