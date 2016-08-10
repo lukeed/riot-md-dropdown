@@ -1,36 +1,56 @@
-# md-dropdown
+# riot-md-dropdown
 
-> Material Design dropdown component for Riot.js.
+> Material Design dropdown component for [Riot.js](https://github.com/riot/riot).
 
 
 ## Install
 
 ```
-$ bower install --save md-dropdown
+$ bower install --save riot-md-dropdown
 ```
 
 
 ## Usage
 
 ```js
-<md-dropdown prop="{ test }"></md-dropdown>
+<md-dropdown label="My Account">
+  <md-dropdown-item label="My Profile" href="/profile" />
+  <!-- ... -->
+  <md-dropdown-item label="Support" onpush="{ doHelp }" />
+  <md-dropdown-item label="Logout" onpush="{ doLogout }" />
+</md-dropdown>
 ```
 
 
 ## Options
 
-#### attr1
+### md-dropdown
 
-Type: `string`
+#### label
 
-Lorem ipsum.
+Type: `string`<br>
+Required: `true`<br>
 
-#### attr2
+The text to render as the dropdown's trigger label.
 
-Type: `boolean`<br>
-Default: `false`
+### md-dropdown-item
 
-Lorem ipsum.
+#### href
+
+Type: `string`<br>
+Required: `false`<br>
+Default: `null`
+
+The URL to open. Unless `href` begins with "http", Riot's [`riot.route`](http://riotjs.com/api/route/#riotrouteto-title-shouldreplace) helper will be used.
+
+
+#### onpush
+
+Type: `function`<br>
+Required: `false`<br>
+Default: `null`
+
+Perform an action when pressed. Synonymous with `onclick`.
 
 
 ## License
