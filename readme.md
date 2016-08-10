@@ -12,7 +12,7 @@ $ bower install --save riot-md-dropdown
 
 ## Usage
 
-```js
+```html
 <md-dropdown label="My Account">
   <md-dropdown-item label="My Profile" href="/profile" />
   <!-- ... -->
