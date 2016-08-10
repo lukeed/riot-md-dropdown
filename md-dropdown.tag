@@ -31,21 +31,22 @@
 
 	<script>
 		var self = this;
-		var isOpen = false;
+
+		self.isOpen = false;
 
 		self.doToggle = function (e) {
-			return isOpen ? self.doClose() : self.doOpen();
+			return self.isOpen ? self.doClose() : self.doOpen();
 		};
 
 		self.doOpen = function () {
 			if (!self.isMounted) return;
-			isOpen = true;
+			self.isOpen = true;
 			self.update();
 		};
 
 		self.doClose = function () {
 			if (!self.isMounted) return;
-			isOpen = false;
+			self.isOpen = false;
 			self.update();
 		}
 	</script>
