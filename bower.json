@@ -1,5 +1,5 @@
 {
-	"name": "md-dropdown",
+	"name": "riot-md-dropdown",
 	"description": "Material Design dropdown component for Riot.js.",
 	"authors": [{
 		"name": "Luke Edwards",
